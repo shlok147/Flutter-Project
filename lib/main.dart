@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'SplashScreen.dart';
+import 'package:flutter/services.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(Myapp());
 }
 
