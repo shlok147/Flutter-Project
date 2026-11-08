@@ -766,8 +766,9 @@ import 'package:path/path.dart' as p;
 import 'info/DBHelper.dart';
 
 class AddUser extends StatefulWidget {
-   P_Details? user;
-   AddUser({super.key, this.user});
+  P_Details? user;
+
+  AddUser({super.key, this.user});
 
   @override
   State<AddUser> createState() => _AddUserState();
@@ -782,7 +783,8 @@ class _AddUserState extends State<AddUser> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   RegExp regex_name = RegExp(r"^[a-zA-Z\s'_\\-]{3,50}$");
-  RegExp regex_email = RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+  RegExp regex_email =
+      RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
   RegExp regex_phone_no = RegExp(r"^\+?[0-9]{10}$");
 
   bool obt1 = true;
@@ -799,7 +801,8 @@ class _AddUserState extends State<AddUser> {
     // Get the directory where the app can store files
     final directory = await getApplicationDocumentsDirectory();
     // Create a unique filename to avoid conflicts
-    final fileName = '${DateTime.now().millisecondsSinceEpoch}${p.extension(image.path)}';
+    final fileName =
+        '${DateTime.now().millisecondsSinceEpoch}${p.extension(image.path)}';
     // Create the full path for the new file
     final newPath = p.join(directory.path, fileName);
     // Copy the picked image file to the new path
@@ -979,15 +982,15 @@ class _AddUserState extends State<AddUser> {
                                             backgroundColor: Colors.black26,
                                             backgroundImage: _imageFile != null
                                                 ? FileImage(_imageFile!)
-                                            as ImageProvider
+                                                    as ImageProvider
                                                 : const AssetImage(
-                                                "assets/Image/photo.gif"),
+                                                    "assets/Image/photo.gif"),
                                             child: _imageFile == null
                                                 ? const Icon(
-                                              Icons.camera_alt,
-                                              color: Colors.white70,
-                                              size: 30,
-                                            )
+                                                    Icons.camera_alt,
+                                                    color: Colors.white70,
+                                                    size: 30,
+                                                  )
                                                 : null,
                                           ),
                                         ),
@@ -996,7 +999,7 @@ class _AddUserState extends State<AddUser> {
                                       if (state.hasError)
                                         Padding(
                                           padding:
-                                          const EdgeInsets.only(top: 8.0),
+                                              const EdgeInsets.only(top: 8.0),
                                           child: Text(
                                             state.errorText!,
                                             style: const TextStyle(
@@ -1044,9 +1047,9 @@ class _AddUserState extends State<AddUser> {
                                     final age = today.year -
                                         inputDate.year -
                                         ((today.month < inputDate.month ||
-                                            (today.month ==
-                                                inputDate.month &&
-                                                today.day < inputDate.day))
+                                                (today.month ==
+                                                        inputDate.month &&
+                                                    today.day < inputDate.day))
                                             ? 1
                                             : 0);
 
@@ -1070,9 +1073,9 @@ class _AddUserState extends State<AddUser> {
                                 value: selectedCity,
                                 items: cities
                                     .map((city) => DropdownMenuItem(
-                                  value: city,
-                                  child: Text(city),
-                                ))
+                                          value: city,
+                                          child: Text(city),
+                                        ))
                                     .toList(),
                                 onChanged: (value) =>
                                     setState(() => selectedCity = value),
@@ -1098,7 +1101,7 @@ class _AddUserState extends State<AddUser> {
                                       width: 1,
                                     ),
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(15)),
+                                        BorderRadius.all(Radius.circular(15)),
                                     color: Colors.white),
                                 child: Padding(
                                   padding: const EdgeInsets.all(2.0),
@@ -1112,7 +1115,7 @@ class _AddUserState extends State<AddUser> {
                                       ),
                                       Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                            MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Expanded(
                                             child: Row(
@@ -1121,14 +1124,14 @@ class _AddUserState extends State<AddUser> {
                                                   value: 'Male',
                                                   groupValue: selectedGender,
                                                   visualDensity:
-                                                  VisualDensity.compact,
+                                                      VisualDensity.compact,
                                                   activeColor:
-                                                  Color(0xFF800020),
+                                                      Color(0xFF800020),
                                                   onChanged: (value) =>
                                                       setState(
-                                                            () =>
+                                                    () =>
                                                         selectedGender = value,
-                                                      ),
+                                                  ),
                                                 ),
                                                 Flexible(
                                                   child: Text('Male',
@@ -1145,14 +1148,14 @@ class _AddUserState extends State<AddUser> {
                                                   value: 'Female',
                                                   groupValue: selectedGender,
                                                   visualDensity:
-                                                  VisualDensity.compact,
+                                                      VisualDensity.compact,
                                                   activeColor:
-                                                  Color(0xFF800020),
+                                                      Color(0xFF800020),
                                                   onChanged: (value) =>
                                                       setState(
-                                                            () =>
+                                                    () =>
                                                         selectedGender = value,
-                                                      ),
+                                                  ),
                                                 ),
                                                 Flexible(
                                                   child: Text('Female',
@@ -1180,15 +1183,17 @@ class _AddUserState extends State<AddUser> {
                                       color: Colors.black,
                                     ),
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(15))),
+                                        BorderRadius.all(Radius.circular(15))),
                                 child: Column(
                                   children: [
                                     Align(
                                       alignment: Alignment.bottomCenter,
-                                      child: Text("Hobbies",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14)),
+                                      child: Text(
+                                        "Hobbies",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14),
+                                      ),
                                     ),
                                     ...hobbies.map((hobby) {
                                       return CheckboxListTile(
@@ -1288,8 +1293,8 @@ class _AddUserState extends State<AddUser> {
   Widget buildTextField(
       String hint, IconData icon, TextEditingController controller, RegExp exp,
       {TextInputType keyboardType = TextInputType.text,
-        bool obscureText = false,
-        int max_length = 0}) {
+      bool obscureText = false,
+      int max_length = 0}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: TextFormField(
@@ -1298,7 +1303,9 @@ class _AddUserState extends State<AddUser> {
         keyboardType: keyboardType,
         decoration: inputDecoration(hint, icon),
         maxLength: max_length != 0 ? max_length : null,
-        buildCounter: (BuildContext context, {int? currentLength, int? maxLength, bool? isFocused}) => null,
+        buildCounter: (BuildContext context,
+                {int? currentLength, int? maxLength, bool? isFocused}) =>
+            null,
         validator: (value) {
           final pattern = exp;
           if (value == null || value.trim().isEmpty) {
@@ -1316,7 +1323,7 @@ class _AddUserState extends State<AddUser> {
   Widget LockbuildTextField(String hint, IconData icon,
       TextEditingController controller, VoidCallback cobt,
       {TextInputType keyboardType = TextInputType.visiblePassword,
-        bool obscureText = false}) {
+      bool obscureText = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: TextFormField(
@@ -1370,7 +1377,7 @@ class _AddUserState extends State<AddUser> {
       filled: true,
       fillColor: Colors.white,
       contentPadding:
-      const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+          const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
       border: OutlineInputBorder(
         borderSide: BorderSide(
           color: Color(0xFF800020),
@@ -1397,7 +1404,7 @@ class _AddUserState extends State<AddUser> {
       filled: true,
       fillColor: Colors.white,
       contentPadding:
-      const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+          const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
       border: OutlineInputBorder(
         borderSide: BorderSide(
           color: Color(0xFF800020),

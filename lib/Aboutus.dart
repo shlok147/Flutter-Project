@@ -14,11 +14,17 @@ class AboutUsPage extends StatefulWidget {
 }
 
 class _AboutUsPageState extends State<AboutUsPage> {
+  final String instagramAppUrl = "instagram://user?username=shlok_charola_04";
   final String instagramUrl = "https://www.instagram.com/shlok_charola_04";
   final String snapchatUrl = "https://www.snapchat.com/add/shlok_charola";
+  final String snapchatAppUrl = "snapchat://add/shlok_charola";
   final String linkedinUrl = "https://www.linkedin.com/in/shlok-charola-05a287316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app";
+  final String linkedinAppUrl = "linkedin://profile/shlok-charola-05a287316";
   final String linktreeUrl = "https://linktr.ee/SHLOK_CHAROLA";
   final String facebookUrl = "https://www.facebook.com/share/1KqiKbpLR5/";
+  final String facebookAppUrl = "fb://page/1KqiKbpLR5";
+
+
 
   late ConfettiController _confettiController;
 
@@ -39,10 +45,22 @@ class _AboutUsPageState extends State<AboutUsPage> {
     super.dispose();
   }
 
-  Future<void> _launchUrl(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+  static Future<void> launchAppOrWeb({
+    required String appUrl,
+    required String webUrl,
+  }) async {
+    final Uri appUri = Uri.parse(appUrl);
+    final Uri webUri = Uri.parse(webUrl);
+
+    if (await canLaunchUrl(appUri)) {
+      await launchUrl(appUri, mode: LaunchMode.externalApplication);
+    } else {
+      await launchUrl(webUri, mode: LaunchMode.externalApplication);
     }
+  }
+  static Future<void> openUrl(String url) async {
+    final uri = Uri.parse(url);
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
   }
 
   @override
@@ -251,31 +269,31 @@ class _AboutUsPageState extends State<AboutUsPage> {
                           icon: const FaIcon(FontAwesomeIcons.instagram,
                               color: Colors.purple),
                           iconSize: 32,
-                          onPressed: () => _launchUrl(instagramUrl),
+                          onPressed: () => launchAppOrWeb(appUrl: instagramAppUrl,webUrl: instagramUrl),
                         ),
                         IconButton(
                           icon: const FaIcon(FontAwesomeIcons.snapchat,
                               color: Colors.yellow),
                           iconSize: 32,
-                          onPressed: () => _launchUrl(snapchatUrl),
+                          onPressed: () => launchAppOrWeb(webUrl: snapchatAppUrl,appUrl: snapchatUrl),
                         ),
                         IconButton(
                           icon: const FaIcon(FontAwesomeIcons.linkedin,
                               color: Colors.blue),
                           iconSize: 32,
-                          onPressed: () => _launchUrl(linkedinUrl),
+                          onPressed: () => launchAppOrWeb(appUrl: linkedinAppUrl,webUrl: linkedinUrl),
                         ),
                         IconButton(
                           icon: const FaIcon(FontAwesomeIcons.link,
                               color: Colors.green),
                           iconSize: 32,
-                          onPressed: () => _launchUrl(linktreeUrl),
+                          onPressed: () => openUrl(linktreeUrl),
                         ),
                         IconButton(
                           icon: const FaIcon(FontAwesomeIcons.facebook,
                               color: Colors.blueAccent),
                           iconSize: 32,
-                          onPressed: () => _launchUrl(facebookUrl),
+                          onPressed: () => launchAppOrWeb(webUrl: facebookUrl,appUrl: facebookAppUrl),
                         ),
                       ],
                     ),

@@ -116,6 +116,9 @@ class _Display_UserState extends State<Display_User> {
                       children: [
                         TextField(
                           controller: searchController,
+                          decoration: InputDecoration(
+                            hintText: "                           Find Your love 🤗",
+                          ),
                           onChanged: (value) {
 
                             filteredUsers.clear();
